@@ -1,7 +1,5 @@
 package de.khamrakulov.algorithms
 
-import scala.annotation.tailrec
-
 object Chapter1 {
 
   def mergeSort(input: List[Int]) = {
