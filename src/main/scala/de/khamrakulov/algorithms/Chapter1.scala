@@ -20,4 +20,15 @@ object Chapter1 {
 
     sort(input, input.length)
   }
+
+  def multiplyKhwarizmi(x: Int, y: Int): Int = {
+    def isEven(num: Int): Boolean = num % 2 == 0
+    def calc(x1:Int, y1: Int): Int = y1 match {
+      case 0 => 0
+      case _ if isEven(y1) => 2 * multiplyKhwarizmi(x1, y1 / 2)
+      case _ if !isEven(y1) => x + 2 * multiplyKhwarizmi(x1, y1 / 2)
+    }
+
+    calc(x, y)
+  }
 }

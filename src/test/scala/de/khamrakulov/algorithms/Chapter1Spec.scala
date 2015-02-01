@@ -8,4 +8,10 @@ class Chapter1Spec extends FlatSpec with Matchers {
       Chapter1.mergeSort(List(8, 3, 0, 6, 1, 7, 2, 4, 5, 9))
     }
   }
+
+  "A Francais multiply" should "return 2468642 as result of multiplication" in {
+    assertResult(2468642) {
+      Chapter1.multiplyKhwarizmi(1111, 2222)
+    }
+  }
 }
