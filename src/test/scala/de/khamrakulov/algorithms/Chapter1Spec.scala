@@ -14,4 +14,10 @@ class Chapter1Spec extends FlatSpec with Matchers {
       Chapter1.multiplyKhwarizmi(1111, 2222)
     }
   }
+
+  "A Karatsuba multiply" should "return 2468642 as result of multiplication" in {
+    assertResult("2468642") {
+      Chapter1.multiplyKaratsuba("1111", "2222")
+    }
+  }
 }

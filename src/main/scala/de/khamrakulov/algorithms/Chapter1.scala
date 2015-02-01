@@ -31,4 +31,18 @@ object Chapter1 {
 
     calc(x, y)
   }
+
+  def multiplyKaratsuba(x: String, y: String):String = (x, y) match {
+    case _ if x.toInt < 10 || y.toInt < 10 => (x.toInt * y.toInt).toString
+    case _ =>
+      val m = List(x.length, y.length).max
+      val m2 = m/2
+      val part1 = x.grouped(m2).toList
+      val part2 = y.grouped(m2).toList
+      val z0 = multiplyKaratsuba(part1(1), part2(1)).toInt
+      val z1 = multiplyKaratsuba((part1(0).toInt + part1(1).toInt).toString, (part2(0).toInt + part2(1).toInt).toString).toInt
+      val z2 = multiplyKaratsuba(part1(0), part2(0)).toInt
+
+      ((z2 * math.pow(10, 2 * m2).toInt) + ((z1 - z2 - z0) * math.pow(10, m2).toInt) + z0).toString
+  }
 }
