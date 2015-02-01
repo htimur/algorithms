@@ -37,11 +37,11 @@ object Chapter1 {
     case _ =>
       val m = List(x.length, y.length).max
       val m2 = m/2
-      val part1 = x.grouped(m2).toList
-      val part2 = y.grouped(m2).toList
-      val z0 = multiplyKaratsuba(part1(1), part2(1)).toInt
-      val z1 = multiplyKaratsuba((part1(0).toInt + part1(1).toInt).toString, (part2(0).toInt + part2(1).toInt).toString).toInt
-      val z2 = multiplyKaratsuba(part1(0), part2(0)).toInt
+      val (num11, num12) = x splitAt m2
+      val (num21, num22) = y splitAt m2
+      val z0 = multiplyKaratsuba(num12, num22).toInt
+      val z1 = multiplyKaratsuba((num11.toInt + num12.toInt).toString, (num21.toInt + num22.toInt).toString).toInt
+      val z2 = multiplyKaratsuba(num11, num21).toInt
 
       ((z2 * math.pow(10, 2 * m2).toInt) + ((z1 - z2 - z0) * math.pow(10, m2).toInt) + z0).toString
   }
